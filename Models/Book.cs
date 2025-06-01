@@ -6,9 +6,9 @@ namespace BookShelf.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public Genre Genre { get; set; }
-        public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public string Author { get; set; }
         public DateOnly PublicationDate { get; set; }
+        public string BookFilePath { get; set; }
     }
 
     public enum Genre

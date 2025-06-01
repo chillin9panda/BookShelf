@@ -7,21 +7,16 @@ namespace BookShelf.Controllers
     // Route Book
     public class BookController : Controller
     {
-        public IActionResult Overview()
-        {
-            var book = new Book()
-            {
-                Id = 1,
-                Title = "Java7",
-                Description = "Java openjdk7 instruction",
-                Genre = Genre.Programming
-            };
-            return View(book);
-        }
 
         private readonly ApplicationDbContext context;
 
         public BookController(ApplicationDbContext _context) { context = _context; }
+
+        public IActionResult Overview()
+        {
+            var books = context.Books.ToList();
+            return View(books);
+        }
 
         public async Task<IActionResult> AddBook(BookViewModel model)
         {

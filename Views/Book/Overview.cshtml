@@ -1,5 +1,36 @@
-@model BookShelf.Models.Book
-@{
-}
+@model List<BookShelf.Models.Book>
 
-<a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="AddBook">AddBooks</a>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div>
+      <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="AddBook">AddBooks</a>
+
+      <table>
+        <tr>
+          <th>No.</th>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>link</th>
+        </tr>
+        @foreach(var book in Model){
+        <tr>
+          <td>@book.Id</td>
+          <td>@book.Title</td>
+          <td>@book.Genre</td>
+          <td><a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Detail">detail</a></td>
+        </tr>
+        }
+      </table>
+    </div>
+  </body>
+
+  </html>

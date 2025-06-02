@@ -42,7 +42,8 @@ namespace BookShelf.Controllers
                         Genre = model.Genre,
                         Author = model.Author,
                         PublicationDate = model.PublicationDate,
-                        BookFilePath = "/BookFiles/" + fileName
+                        BookFilePath = "/BookFiles/" + fileName,
+                        UploadedBy = User.Identity.Name
                     };
 
                     context.Books.Add(saveBook);
@@ -70,6 +71,22 @@ namespace BookShelf.Controllers
             }
 
             return View(book);
+        }
+
+        public async Task<IActionResult> Download(int id)
+        {
+            var book = await context.Books.FindAsync(id);
+            if (null == book || string.IsNullOrEmpty(book.BookFilePath))
+            {
+                return NotFound();
+            }
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+                                    book.BookFilePath.TrimStart('/'));
+            var contentType = "application/pdf";
+            var fileName = Path.GetFileName(book.BookFilePath);
+            var fileBytes = await System.IO.File.ReadAllBytesAsync(path);
+            return File(fileBytes, contentType, fileName);
         }
     }
 

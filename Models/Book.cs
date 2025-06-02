@@ -9,6 +9,7 @@ namespace BookShelf.Models
         public string Author { get; set; }
         public DateOnly PublicationDate { get; set; }
         public string BookFilePath { get; set; }
+        public string UploadedBy { get; set; }
     }
 
     public enum Genre

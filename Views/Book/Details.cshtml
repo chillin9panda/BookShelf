@@ -1,4 +1,7 @@
 @model BookShelf.Models.Book
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+
 
 @{
 ViewData["Title"]="Book Details";
@@ -19,17 +22,15 @@ ViewData["Title"]="Book Details";
     <p>Description: @Model.Description</p>
     <p>Author: @Model.Author</p>
     <p>Publication-Date: @Model.PublicationDate</p>
-    <p>Uploaded By: to be added after finishing auth</p>
+    <p>Uploaded By: @Model.UploadedBy</p>
   </div>
 
-  <!-- 
-    Define After Auth
-    Show Modify and Delete if loggedIn user === UploadedBy
-  -->
   <div class="details-links-container">
-    <a class="book-links" asp-controller="Book" asp-action="Download">Download</a>
+    <a class="book-links" asp-controller="Book" asp-action="Download" asp-route-id="@Model.Id">Download</a>
+    @if(User.Identity.IsAuthenticated && User.Identity.Name == Model.UploadedBy){
     <a class="book-links" asp-controller="Book" asp-action="Modify">Modify</a>
     <a class="book-links" asp-controller="Book" asp-action="Delete">Delete</a>
+    }
   </div>
 </body>
 

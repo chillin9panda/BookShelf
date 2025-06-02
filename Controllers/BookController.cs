@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using BookShelf.Models;
 using BookShelf.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookShelf.Controllers
 {
     // Route Book
+    [Authorize]
     public class BookController : Controller
     {
 

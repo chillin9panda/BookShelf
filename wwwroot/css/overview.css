@@ -26,12 +26,12 @@ td {
   text-align: left;
 }
 
-.book-details {
+.book-links {
   text-decoration: none;
   color: blue;
 }
 
-.book-details:hover {
+.book-links:hover {
   color: darkblue;
   text-decoration: underline;
 }

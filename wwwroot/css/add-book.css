@@ -7,9 +7,19 @@
   flex-direction: column;
 }
 
+.form-container form select,
+.form-container form input {
+  padding: 4px;
+}
+
+.form-container form textarea {
+  padding-bottom: 50px;
+}
+
+.form-container form textarea,
+.form-container form select,
 .form-container form input {
   margin-bottom: 15px;
-  padding: 4px;
 }
 
 .form-container form button {

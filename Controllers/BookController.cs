@@ -58,6 +58,17 @@ namespace BookShelf.Controllers
 
             return View(model);
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var book = await context.Books.FindAsync(id);
+            if (null == book)
+            {
+                return NotFound();
+            }
+
+            return View(book);
+        }
     }
 
 }

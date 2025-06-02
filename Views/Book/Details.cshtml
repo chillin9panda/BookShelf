@@ -1,0 +1,36 @@
+@model BookShelf.Models.Book
+
+@{
+ViewData["Title"]="Book Details";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>@Model.Title</title>
+  <link href="~/css/book-details.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="details-container">
+    <h2>@Model.Title</h2>
+    <p>Description: @Model.Description</p>
+    <p>Author: @Model.Author</p>
+    <p>Publication-Date: @Model.PublicationDate</p>
+    <p>Uploaded By: to be added after finishing auth</p>
+  </div>
+
+  <!-- 
+    Define After Auth
+    Show Modify and Delete if loggedIn user === UploadedBy
+  -->
+  <div class="details-links-container">
+    <a class="book-links" asp-controller="Book" asp-action="Download">Download</a>
+    <a class="book-links" asp-controller="Book" asp-action="Modify">Modify</a>
+    <a class="book-links" asp-controller="Book" asp-action="Delete">Delete</a>
+  </div>
+</body>
+
+</html>

@@ -27,8 +27,8 @@
           <td>@book.Title</td>
           <td>@book.Genre</td>
           <td>
-            <a class="book-links" asp-area="" asp-controller="Book" asp-action="Detail">details</a>
-            <a class="book-links" asp-area="" asp-controller="Book" asp-action="Download">download</a>
+            <a class="book-links" asp-route-id="@book.Id" asp-controller="Book" asp-action="Details">details</a>
+            <a class="book-links" asp-route-id="@book.Id" asp-controller="Book" asp-action="Download">download</a>
           </td>
         </tr>
         }

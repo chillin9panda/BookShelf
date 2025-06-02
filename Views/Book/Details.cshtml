@@ -26,10 +26,12 @@ ViewData["Title"]="Book Details";
   </div>
 
   <div class="details-links-container">
-    <a class="book-links" asp-controller="Book" asp-action="Download" asp-route-id="@Model.Id">Download</a>
+    <a class="book-links download" asp-controller="Book" asp-action="Download" asp-route-id="@Model.Id">Download</a>
     @if(User.Identity.IsAuthenticated && User.Identity.Name == Model.UploadedBy){
-    <a class="book-links" asp-controller="Book" asp-action="Modify">Modify</a>
-    <a class="book-links" asp-controller="Book" asp-action="Delete">Delete</a>
+    <a class="book-links modify" asp-controller="Book" asp-action="Modify">Modify</a>
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="POST">
+      <button class="book-links delete">Delete</button>
+    </form>
     }
   </div>
 </body>

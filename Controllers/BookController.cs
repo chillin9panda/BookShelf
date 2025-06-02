@@ -88,6 +88,33 @@ namespace BookShelf.Controllers
             var fileBytes = await System.IO.File.ReadAllBytesAsync(path);
             return File(fileBytes, contentType, fileName);
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var book = await context.Books.FindAsync(id);
+            if (null == book)
+            {
+                return NotFound();
+            }
+
+            if (book.UploadedBy != User.Identity.Name)
+            {
+                return Forbid();
+            }
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+                                    book.BookFilePath.TrimStart('/'));
+
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+
+            context.Books.Remove(book);
+            await context.SaveChangesAsync();
+
+            return RedirectToAction("Overview");
+        }
     }
 
 }

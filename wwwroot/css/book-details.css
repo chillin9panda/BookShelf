@@ -7,4 +7,33 @@
   border: 1px solid #000;
   padding: 5px;
   border-radius: 5px;
+  color: #fff;
+}
+
+.download {
+  background-color: green;
+}
+
+.modify {
+  background-color: blue;
+}
+
+.delete {
+  background-color: red;
+}
+
+.download:hover {
+  background-color: darkgreen;
+}
+
+.modify:hover {
+  background-color: darkblue;
+}
+
+.delete:hover {
+  background-color: darkred;
+}
+
+form {
+  display: inline;
 }

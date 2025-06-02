@@ -6,13 +6,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link href="css/style.css" rel="stylesheet">
+    <title>Books</title>
+    <link href="~/css/overview.css" rel="stylesheet">
   </head>
 
   <body>
     <div>
-      <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="AddBook">AddBooks</a>
+      <a class="add-book" asp-area="" asp-controller="Book" asp-action="AddBook">Add Book</a>
 
       <table>
         <tr>
@@ -26,7 +26,7 @@
           <td>@book.Id</td>
           <td>@book.Title</td>
           <td>@book.Genre</td>
-          <td><a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Detail">detail</a></td>
+          <td><a class="book-details" asp-area="" asp-controller="Book" asp-action="Detail">details</a></td>
         </tr>
         }
       </table>

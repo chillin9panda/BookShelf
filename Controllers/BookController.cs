@@ -115,6 +115,35 @@ namespace BookShelf.Controllers
 
             return RedirectToAction("Overview");
         }
+
+        public async Task<IActionResult> Modify(int id, BookViewModel model)
+        {
+            var book = await context.Books.FindAsync(id);
+            if (null == book)
+            {
+                return NotFound();
+            }
+
+            if (book.UploadedBy != User.Identity.Name)
+            {
+                return Forbid();
+            }
+
+            var existingBook =
+                new BookViewModel
+                {
+                    Id = book.Id,
+                    Title = book.Title,
+                    Description = book.Description,
+                    Genre = book.Genre,
+                    Author = book.Author,
+                    PublicationDate = book.PublicationDate,
+                    BookFilePath = book.BookFilePath,
+                    UploadedBy = User.Identity.Name
+
+                };
+            return View(existingBook);
+        }
     }
 
 }

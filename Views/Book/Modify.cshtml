@@ -1,0 +1,36 @@
+@model BookViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link href="~/css/add-book.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="form-container">
+    <h2>@Model.Id - @Model.Title</h2>
+    <h5>Uploader: @Model.UploadedBy</h5>
+    <form method="POST" asp-action="Modify" enctype="multipart/form-data">
+      <label>Book Title:</label>
+      <input asp-for="Title" type="text" placeholder="Book Title" required />
+      <label>Book Description:</label>
+      <textarea asp-for="Description" placeholder="Book Description" required></textarea>
+      <label>Book Genre:</label>
+      <select asp-for="Genre" asp-items="Html.GetEnumSelectList<Genre>()" required>
+      </select>
+      <label>Author Name:</label>
+      <input asp-for="Author" type="text" placeholder="Author Name" required />
+      <label>Publication Date:</label>
+      <input asp-for="PublicationDate" type="date" placeholder="Publication Date" required />
+      <label>Book File(Delete and Reupload to change book):</label>
+      <input asp-for="BookFilePath" type="text" disabled />
+      <button type="submit">Modify Book Detail</button>
+    </form>
+  </div>
+</body>
+
+</html>
